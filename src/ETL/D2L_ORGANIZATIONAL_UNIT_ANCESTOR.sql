@@ -1,5 +1,5 @@
 MERGE INTO
-  MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR A
+  icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR A
 USING
   (
     SELECT
@@ -10,9 +10,9 @@ USING
       AncestorOrgUnit.Type AS AncestorOrgUnitType,
       AncestorOrgUnit.Code AS AncestorOrgUnitCode
     FROM
-      MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor,
-      MFOREST.D2L_ORGANIZATIONAL_UNIT OrgUnit,
-      MFOREST.D2L_ORGANIZATIONAL_UNIT AncestorOrgUnit
+      icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor,
+      icollprd.D2L_ORGANIZATIONAL_UNIT OrgUnit,
+      icollprd.D2L_ORGANIZATIONAL_UNIT AncestorOrgUnit
     WHERE
       OrgUnit.OrgUnitId = OrgUnitAncestor.OrgUnitId AND
       AncestorOrgUnit.OrgUnitId = OrgUnitAncestor.AncestorOrgUnitId
@@ -37,7 +37,7 @@ WHEN MATCHED THEN
 
 
 MERGE INTO
-  MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR A
+  icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR A
 USING
   (
     SELECT

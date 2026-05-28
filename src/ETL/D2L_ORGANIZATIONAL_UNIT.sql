@@ -10,7 +10,7 @@ COMMIT;
 
 
 MERGE INTO
-  MFOREST.D2L_ORGANIZATIONAL_UNIT A
+  icollprd.D2L_ORGANIZATIONAL_UNIT A
 USING
   (
     SELECT
@@ -49,13 +49,13 @@ USING
           REGEXP_SUBSTR(OrgUnit.Code, '^090\.([^\.]*)\.([^.]+)$', 1, 1, 'i', 1)
       END AS SisDeptCode
     FROM
-      MFOREST.D2L_ORGANIZATIONAL_UNIT OrgUnit,
+      icollprd.D2L_ORGANIZATIONAL_UNIT OrgUnit,
       (
         SELECT
           OrgUnitAncestor.OrgUnitId,
           OrgUnitAncestor.AncestorOrgUnitId AS CourseOfferingId
         FROM
-          MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
+          icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
         WHERE
           OrgUnitAncestor.AncestorOrgUnitType = 'Course Offering' AND
           OrgUnitAncestor.OrgUnitSingleAncestor = 1
@@ -65,7 +65,7 @@ USING
           OrgUnitAncestor.OrgUnitId,
           OrgUnitAncestor.AncestorOrgUnitId AS CourseTemplateId
         FROM
-          MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
+          icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
         WHERE
           OrgUnitAncestor.AncestorOrgUnitType = 'Course Template' AND
           OrgUnitAncestor.OrgUnitSingleAncestor = 1
@@ -75,7 +75,7 @@ USING
           OrgUnitAncestor.OrgUnitId,
           OrgUnitAncestor.AncestorOrgUnitId AS DepartmentId
         FROM
-          MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
+          icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
         WHERE
           OrgUnitAncestor.AncestorOrgUnitType = 'Department' AND
           OrgUnitAncestor.OrgUnitSingleAncestor = 1
@@ -85,7 +85,7 @@ USING
           OrgUnitAncestor.OrgUnitId,
           OrgUnitAncestor.AncestorOrgUnitId AS ProgramId
         FROM
-          MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
+          icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
         WHERE
           OrgUnitAncestor.AncestorOrgUnitType = 'Program' AND
           OrgUnitAncestor.OrgUnitSingleAncestor = 1
@@ -95,7 +95,7 @@ USING
           OrgUnitAncestor.OrgUnitId,
           OrgUnitAncestor.AncestorOrgUnitId AS CollegeId
         FROM
-          MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
+          icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor
         WHERE
           OrgUnitAncestor.AncestorOrgUnitType = 'College' AND
           OrgUnitAncestor.OrgUnitSingleAncestor = 1
@@ -111,8 +111,8 @@ USING
             WHEN SUBSTR(OrgUnit.Code, -1, 1) = 4 THEN SUBSTR(OrgUnit.Code, 0, 4) || N'01'
           END AS SisTermCode
         FROM
-          MFOREST.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor,
-          MFOREST.D2L_ORGANIZATIONAL_UNIT OrgUnit
+          icollprd.D2L_ORGANIZATIONAL_UNIT_ANCESTOR OrgUnitAncestor,
+          icollprd.D2L_ORGANIZATIONAL_UNIT OrgUnit
         WHERE
           OrgUnitAncestor.AncestorOrgUnitType = 'Semester' AND
           OrgUnitAncestor.OrgUnitSingleAncestor = 1 AND

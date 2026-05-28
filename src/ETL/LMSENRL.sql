@@ -60,15 +60,15 @@ SELECT
   EnrolledByAccount.LastName AS LMSENRL_ENROLLEDBY_LAST_NAME,
   EnrolledByUser.SSOUSER_AFFILIATIONS as LMSENRL_ENROLLEDBY_AFFILIATIONS
 FROM
-  MFOREST.SISTERM SisTerm,
-  MFOREST.D2L_ORGANIZATIONAL_UNIT Section,
-  MFOREST.D2L_USER_ENROLLMENT SectionEnrollment,
-  MFOREST.D2L_USER StudentAccount,
-  MFOREST.D2L_ORGANIZATIONAL_UNIT CourseOffering,
-  MFOREST.D2L_USER_ENROLLMENT CourseOfferingEnrollment,
-  MFOREST.D2L_USER EnrolledByAccount,
-  MFOREST.SSOUSER StudentUser,
-  MFOREST.SSOUSER EnrolledByUser
+  icollprd.SISTERM SisTerm,
+  icollprd.D2L_ORGANIZATIONAL_UNIT Section,
+  icollprd.D2L_USER_ENROLLMENT SectionEnrollment,
+  icollprd.D2L_USER StudentAccount,
+  icollprd.D2L_ORGANIZATIONAL_UNIT CourseOffering,
+  icollprd.D2L_USER_ENROLLMENT CourseOfferingEnrollment,
+  icollprd.D2L_USER EnrolledByAccount,
+  icollprd.SSOUSER StudentUser,
+  icollprd.SSOUSER EnrolledByUser
 WHERE
   (
     SisTerm.SISTERM_IS_PREV = 1 OR

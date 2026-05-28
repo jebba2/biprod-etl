@@ -16,13 +16,13 @@ USING
         SELECT
           MAX(I.STVTERM_CODE)
         FROM
-          STVTERM@BIPROD_BREPT_LINK_MFOREST I
+          STVTERM@EDW_BANNER_LINK I
         WHERE
           I.STVTERM_CODE < (
             SELECT
               MIN(J.STVTERM_CODE)
             FROM
-              STVTERM@BIPROD_BREPT_LINK_MFOREST J
+              STVTERM@EDW_BANNER_LINK J
             WHERE
               J.STVTERM_END_DATE + 1 > SYSDATE
           )
@@ -31,7 +31,7 @@ USING
         SELECT
           MIN(I.STVTERM_CODE)
         FROM
-          STVTERM@BIPROD_BREPT_LINK_MFOREST I
+          STVTERM@EDW_BANNER_LINK I
         WHERE
           I.STVTERM_END_DATE + 1 > SYSDATE
       ) THEN 1 END as SISTERM_IS_CURR,
@@ -39,20 +39,20 @@ USING
         SELECT
           MIN(I.STVTERM_CODE)
         FROM
-          STVTERM@BIPROD_BREPT_LINK_MFOREST I
+          STVTERM@EDW_BANNER_LINK I
         WHERE
           I.STVTERM_CODE > (
             SELECT
               MIN(J.STVTERM_CODE)
             FROM
-              STVTERM@BIPROD_BREPT_LINK_MFOREST J
+              STVTERM@EDW_BANNER_LINK J
             WHERE
               J.STVTERM_END_DATE + 1 > SYSDATE
           )
       ) THEN 1 END AS SISTERM_IS_NEXT,
       STVTERM_ACTIVITY_DATE as SISTERM_ACTIVITY_DATE
     FROM
-      STVTERM@BIPROD_BREPT_LINK_MFOREST
+      STVTERM@EDW_BANNER_LINK
     WHERE
       STVTERM_CODE >= '201608' AND
       STVTERM_CODE < '999999'
@@ -119,7 +119,7 @@ WHERE
     SELECT
       1
     FROM
-      STVTERM@BIPROD_BREPT_LINK_MFOREST
+      STVTERM@EDW_BANNER_LINK
     WHERE
       STVTERM_CODE = SISTERM_CODE
   )

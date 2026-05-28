@@ -150,7 +150,7 @@ WHERE
 ;
 
 MERGE INTO
-  MFOREST.D2L_USER_ENROLLMENT A
+  icollprd.D2L_USER_ENROLLMENT A
 USING
   (
     SELECT
@@ -214,7 +214,7 @@ WHEN NOT MATCHED THEN
 ;
 
 MERGE INTO
-  MFOREST.D2L_USER_ENROLLMENT A
+  icollprd.D2L_USER_ENROLLMENT A
 USING
   (
     SELECT
@@ -222,8 +222,8 @@ USING
       UserEnrollment.OrgUnitId,
       MAX(CourseAccessLog.DayAccessed) as LastAccessed
     FROM
-      MFOREST.D2L_USER_ENROLLMENT UserEnrollment,
-      MFOREST.D2L_COURSE_ACCESS CourseAccessLog
+      icollprd.D2L_USER_ENROLLMENT UserEnrollment,
+      icollprd.D2L_COURSE_ACCESS CourseAccessLog
     WHERE
       CourseAccessLog.UserId = UserEnrollment.UserId AND
       CourseAccessLog.OrgUnitId = UserEnrollment.OrgUnitId AND
@@ -246,7 +246,7 @@ WHEN MATCHED THEN
 ;
 
 MERGE INTO
-  MFOREST.D2L_USER_ENROLLMENT A
+  icollprd.D2L_USER_ENROLLMENT A
 USING
   (
     SELECT
@@ -254,8 +254,8 @@ USING
       UserEnrollment.OrgUnitId,
       MAX(CourseAccessLog.Timestamp) as LastAccessed
     FROM
-      MFOREST.D2L_USER_ENROLLMENT UserEnrollment,
-      MFOREST.D2L_COURSE_ACCESS_LOG CourseAccessLog
+      icollprd.D2L_USER_ENROLLMENT UserEnrollment,
+      icollprd.D2L_COURSE_ACCESS_LOG CourseAccessLog
     WHERE
       CourseAccessLog.UserId = UserEnrollment.UserId AND
       CourseAccessLog.OrgUnitId = UserEnrollment.OrgUnitId AND
